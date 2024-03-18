@@ -30,17 +30,16 @@ exports.checkLogin = async (req, res, next) => {
 	next();
 };
 
-// exports.checkNewArticle = async (req, res, next) => {
-// 	const schema = joi.object({
-// 		title: joi.string().required(),
-// 		description: joi.string().required(),
-// 		body: joi.string().required()
-// 	});
+exports.checkNewCard = async (req, res, next) => {
+	const schema = joi.object({
+		serial_number: joi.string().required(),
+		card_holder: joi.string().required(),
+	});
 
-// 	try {
-// 		const value = await schema.validateAsync(req.body);
-// 	} catch (error) {
-// 		return res.status(422).json({ message: error.details[0].message, data: null });
-// 	}
-// 	next();
-// }
+	try {
+		const value = await schema.validateAsync(req.body);
+	} catch (error) {
+		return res.status(422).json({ message: error.details[0].message, data: null });
+	}
+	next();
+}

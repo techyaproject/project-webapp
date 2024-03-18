@@ -4,7 +4,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
-const articlesRoutes = require("./routes/articlesRoutes");
+const cardsRoutes = require("./routes/cardsRoutes");
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app
 	.use("/auth", authRoutes)
-	// .use("/articles", articlesRoutes)
+	.use("/cards", cardsRoutes)
 	.use("*", (req, res) => {
 		return res.status(404).json({
 			message: "Route not found"
