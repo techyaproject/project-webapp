@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
 const cardsRoutes = require("./routes/cardsRoutes");
+const entriesRoutes = require("./routes/entriesRoutes");
 
 const app = express();
 
@@ -13,15 +14,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-
 app.get("/", (req, res) => {
-	// res.render("home", { user: req.user });
 	res.send(`Welcome to the Backend!`);
 });
 
 app
 	.use("/auth", authRoutes)
 	.use("/cards", cardsRoutes)
+	.use("/entries-log", entriesRoutes)
+
 	.use("*", (req, res) => {
 		return res.status(404).json({
 			message: "Route not found"
@@ -29,4 +30,3 @@ app
 	});
 
 module.exports = app;
-

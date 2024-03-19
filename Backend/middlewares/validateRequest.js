@@ -43,3 +43,16 @@ exports.checkNewCard = async (req, res, next) => {
 	}
 	next();
 }
+
+exports.checkEntryDetails = async (req, res, next) => {
+	const schema = joi.object({
+		card_serial_number: joi.string().required(),
+	});
+
+	try {
+		const value = await schema.validateAsync(req.body);
+	} catch (error) {
+		return res.status(422).json({ message: error.details[0].message, data: null });
+	}
+	next();
+}

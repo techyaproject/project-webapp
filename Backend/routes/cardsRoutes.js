@@ -7,8 +7,8 @@ router
    .use(isLoggedIn)
 	.get("/", cardsControllers.getAllArticles)
 	.get("/:id", cardsControllers.getOneArticle)
-	.post("/", isLoggedIn, checkNewCard, cardsControllers.createArticle)
-	.put("/:id", isLoggedIn, cardsControllers.updateArticle)
-	.delete("/:id", isLoggedIn, cardsControllers.deleteOneArticle);
+	.post("/", checkNewCard, cardsControllers.createArticle)
+	.put("/:id", cardsControllers.updateArticle)
+	.delete("/:id", cardsControllers.deleteOneArticle);
 
 module.exports = router;
