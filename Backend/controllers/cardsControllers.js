@@ -45,6 +45,13 @@ exports.getOneCard = async (req, res) => {
 exports.createCard = async (req, res) => {
 	try {
       const cardDetails = req.body;
+		const existingCard = await Card.findOne({ serial_number: cardDetails.serial_number });
+		if (existingCard) {
+			return res.status(409).json({
+				message: "Card already exists! Kindly reister another card",
+				data: existingCard
+			});
+		}
 		const newCard = await Card.create(cardDetails);
 
 		return res.status(201).json({

@@ -5,10 +5,10 @@ const { checkNewCard } = require("../middlewares/validateRequest");
 
 router
    .use(isLoggedIn)
-	.get("/", cardsControllers.getAllArticles)
-	.get("/:id", cardsControllers.getOneArticle)
-	.post("/", checkNewCard, cardsControllers.createArticle)
-	.put("/:id", cardsControllers.updateArticle)
-	.delete("/:id", cardsControllers.deleteOneArticle);
+	.get("/", cardsControllers.getAllCards)
+	.get("/:id", cardsControllers.getOneCard)
+	.post("/", checkNewCard, cardsControllers.createCard)
+	.put("/:id", cardsControllers.updateCard)
+	.delete("/:id", cardsControllers.deleteOneCard);
 
 module.exports = router;
