@@ -12,8 +12,7 @@ const entrychema = new mongoose.Schema({
 	},
 	entry_status: {
 		type: String,
-		enum: ["admitted", "disallowed"],
-		required: [true, "Please enter card serial number"]
+		enum: ["admitted", "disallowed"]
 	},
 	entry_time: {
 		type: Date,
