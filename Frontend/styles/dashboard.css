@@ -1,0 +1,110 @@
+/* General Styles */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar-brand h2 {
+	margin: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+	width: 250px;
+	background-color: #f0f0f0;
+	position: fixed;
+	left: 0;
+	top: 60px; /* Adjust to match navbar height */
+	bottom: 0;
+	overflow-y: auto;
+}
+
+.sidebar-menu {
+	list-style: none;
+	padding: 0;
+}
+
+.sidebar-item {
+	display: block;
+	padding: 10px 20px;
+	color: #333;
+	text-decoration: none;
+}
+
+.sidebar-item:hover {
+	background-color: #ddd;
+}
+
+.sidebar-item.active {
+	background-color: #ccc;
+}
+
+/* Content Styles */
+.content {
+	margin-left: 250px; /* Adjust to match sidebar width */
+	padding: 20px;
+}
+
+.section {
+	display: none;
+}
+
+.section.active {
+	display: block;
+}
+
+.card-list {
+	margin-bottom: 20px;
+}
+
+.card {
+	background-color: #fff;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.delete-btn {
+	background-color: #ff0000;
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+
+.delete-btn:hover {
+	background-color: #cc0000;
+}
+
+/* Entry Styles */
+.entry-list {
+	margin-bottom: 20px;
+}
+
+.entry {
+	background-color: #fff;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+	.sidebar {
+		width: 100%;
+		position: static;
+	}
+
+	.content {
+		margin-left: 0;
+	}
+}

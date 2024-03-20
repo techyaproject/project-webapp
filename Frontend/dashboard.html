@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Access Control Dashboard</title>
+    <link rel="stylesheet" href="./styles/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <h2>Welcome, John Doe</h2> <!-- Replace "John Doe" with the actual admin's name -->
+        </div>
+        <div class="navbar-links">
+            <a href="#" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#cards-section" class="sidebar-item active">Cards</a></li>
+            <li><a href="#entries-section" class="sidebar-item">Entries</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="cards-section" class="section active">
+            <h2>Cards</h2>
+            <!-- Display cards from the database here -->
+            <div class="card-list">
+                <!-- Sample Card -->
+                <div class="card">
+                    <p><strong>Serial Number:</strong> ABC123</p>
+                    <p><strong>Card Holder:</strong> John Doe</p>
+                    <button class="delete-btn">Delete</button>
+                </div>
+            </div>
+            <h3>Add New Card</h3>
+            <form id="add-card-form">
+                <label for="serial-number">Serial Number:</label>
+                <input type="text" id="serial-number" name="serial-number" required>
+                <label for="card-holder">Card Holder:</label>
+                <input type="text" id="card-holder" name="card-holder" required>
+                <button type="submit">Add Card</button>
+            </form>
+        </div>
+
+        <div id="entries-section" class="section">
+            <h2>Entries</h2>
+            <!-- Display entries from the database here -->
+            <div class="entry-list">
+                <!-- Sample Entry -->
+                <div class="entry">
+                    <p><strong>Serial Number:</strong> ABC123</p>
+                    <p><strong>Card Holder:</strong> John Doe</p>
+                    <p><strong>Entry Time:</strong> 2024-03-20 12:00 PM</p>
+                    <p><strong>Entry Status:</strong> Allowed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts/dashboard.js"></script>
+</body>
+</html>
