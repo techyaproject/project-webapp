@@ -40,4 +40,89 @@ document.addEventListener("DOMContentLoaded", function () {
 	themeToggle.addEventListener("click", function () {
 		body.classList.toggle("dark-mode");
 	});
+
+	const registerForm = document.getElementById("register-form");
+	const loginForm = document.getElementById("login-form");
+
+	registerForm.addEventListener("submit", async function (event) {
+		event.preventDefault();
+		console.log("Register form submitted");
+
+		let formData = new FormData(registerForm);
+		let data = {};
+		for (let [key, value] of formData.entries()) {
+			data[key] = value;
+		}
+		console.log(data);
+		// change the register button to a spinner
+		const registerButton = document.getElementById("register-button");
+		registerButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Registering...`;
+
+		await fetch("https://project-webapp.onrender.com/auth/signup", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("Registration response:", data);
+				registerForm.reset();
+				if (data.message !== "User signed in successfully") {
+					const infoReg = document.getElementById("info-reg");
+					infoReg.style.display = "block";
+					infoReg.style.color = "red";
+					infoReg.innerHTML = data.message;
+               registerButton.innerHTML = "Register";
+				} else {
+					localStorage.setItem("token", data.token);
+					window.location.href = "dashboard.html";
+				}
+			})
+			.catch((error) => {
+				console.error("Error registering:", error);
+			});
+	});
+
+	loginForm.addEventListener("submit", function (event) {
+		event.preventDefault();
+		console.log("Login form submitted");
+
+		let formData = new FormData(loginForm);
+		let data = {};
+		for (let [key, value] of formData.entries()) {
+			data[key] = value;
+		}
+		console.log(data);
+		// change the register button to a spinner
+		const loginButton = document.getElementById("login-button");
+		loginButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Registering...`;
+
+		fetch("https://project-webapp.onrender.com/auth/signin", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("Login response:", data);
+				loginForm.reset();
+				if (data.message !== "User signed in successfully") {
+					const infoLoginn = document.getElementById("info-login");
+					infoLoginn.style.display = "block";
+					infoLoginn.style.color = "red";
+					infoLoginn.innerHTML = data.message;
+               loginButton.innerHTML = "Login";
+				} else {
+					localStorage.setItem("token", data.token);
+					window.location.href = "dashboard.html";
+				}
+			})
+			.catch((error) => {
+				console.error("Error logging in:", error);
+			});
+	});
 });
