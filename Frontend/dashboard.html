@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-brand">
-            <h2>Welcome, John Doe</h2> <!-- Replace "John Doe" with the actual admin's name -->
+            <h2>Welcome, <span id="loggedin-user"></span></h2>
         </div>
         <div class="navbar-links">
             <a href="#" class="logout-btn">Logout</a>
@@ -38,9 +38,9 @@
             <h3>Add New Card</h3>
             <form id="add-card-form">
                 <label for="serial-number">Serial Number:</label>
-                <input type="text" id="serial-number" name="serial-number" required>
+                <input type="text" id="serial-number" name="serial_number" required>
                 <label for="card-holder">Card Holder:</label>
-                <input type="text" id="card-holder" name="card-holder" required>
+                <input type="text" id="card-holder" name="card_holder" required>
                 <button type="submit">Add Card</button>
             </form>
         </div>

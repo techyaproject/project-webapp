@@ -74,9 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
 					infoReg.style.display = "block";
 					infoReg.style.color = "red";
 					infoReg.innerHTML = data.message;
-               registerButton.innerHTML = "Register";
+					registerButton.innerHTML = "Register";
 				} else {
 					localStorage.setItem("token", data.token);
+					localStorage.setItem("username", data.data.first_name);
 					window.location.href = "dashboard.html";
 				}
 			})
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.log(data);
 		// change the register button to a spinner
 		const loginButton = document.getElementById("login-button");
-		loginButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Registering...`;
+		loginButton.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Logging in...`;
 
 		fetch("https://project-webapp.onrender.com/auth/signin", {
 			method: "POST",
@@ -115,9 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
 					infoLoginn.style.display = "block";
 					infoLoginn.style.color = "red";
 					infoLoginn.innerHTML = data.message;
-               loginButton.innerHTML = "Login";
+					loginButton.innerHTML = "Login";
 				} else {
 					localStorage.setItem("token", data.token);
+					localStorage.setItem("username", data.data.first_name);
 					window.location.href = "dashboard.html";
 				}
 			})
