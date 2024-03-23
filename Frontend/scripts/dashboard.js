@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Display loggedin user in header
 	loggedinUser.innerHTML = localStorage.getItem("username");
 
+	// Add event listener for logout button
+	const logoutButton = document.getElementById("logout-btn");
+	logoutButton.addEventListener("click", function () {
+		localStorage.removeItem("token");
+		localStorage.removeItem("username");
+		window.location.href = "index.html";
+	});
+
 	sidebarItems.forEach(function (item) {
 		item.addEventListener("click", function (event) {
 			event.preventDefault(); // Prevent default link behavior
