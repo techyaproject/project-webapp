@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const token = localStorage.getItem("token");
+	if (!token) {
+		window.location.href = "index.html";
+	}
+
 	const sidebarItems = document.querySelectorAll(".sidebar-item");
 	const sections = document.querySelectorAll(".section");
 	const loggedinUser = document.getElementById("loggedin-user");
@@ -151,9 +155,28 @@ document.addEventListener("DOMContentLoaded", function () {
 					<p><strong>Serial Number:</strong> ${card.serial_number}</p>
 					<p><strong>Card Holder:</strong> ${card.card_holder}</p>
 					<p><strong>Card Status:</strong> ${card.active ? "Active" : "Inactive"}</p>
-					<button class="delete-btn">Delete</button>
+					<button class="delete-btn" id="delete-${card._id}">Delete</button>
 			  `;
 			cardList.appendChild(cardItem);
+
+			// Add event listener to delete card
+			const deleteButton = cardItem.querySelector(".delete-btn");
+			deleteButton.addEventListener("click", function () {
+				fetch(`https://project-webapp.onrender.com/cards/${card._id}`, {
+					method: "DELETE",
+					headers: {
+						Authorization: "Bearer " + token
+					}
+				})
+					.then((response) => response.json())
+					.then((data) => {
+						console.log("Card deleted:", data);
+						fetchCards(token);
+					})
+					.catch((error) => {
+						console.error("Error deleting card:", error);
+					});
+			});
 		});
 	}
 
