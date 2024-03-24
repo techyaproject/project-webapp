@@ -179,6 +179,10 @@ nav {
 	display: none;
 }
 
+#register-modal, #login-modal {
+	display: none;
+}
+
 /* Media Queries */
 @media (min-width: 768px) {
 	.features {

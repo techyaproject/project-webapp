@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			cardItem.classList.add("card");
 			cardItem.innerHTML = `
 					<p><strong>Serial Number:</strong> ${card.serial_number}</p>
-					<p><strong>Card Holder:</strong> ${card.card_holder}</p>
+					<p><strong>Card Holder:</strong> ${card.owner_name}</p>
 					<p><strong>Card Status:</strong> ${card.active ? "Active" : "Inactive"}</p>
 					<button class="delete-btn" id="delete-${card._id}">Delete</button>
 			  `;
@@ -397,21 +397,25 @@ document.addEventListener("DOMContentLoaded", function () {
 		const cardReaderModal = document.getElementById("card-reader-modal");
 		cardReaderModal.style.display = "block";
 
-		// Fetch most recent card data
-		fetch("https://project-webapp.onrender.com/read-card/latest", {
-			method: "GET",
-			headers: {
-				Authorization: "Bearer " + token
-			}
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				const cardSerialNumberInput = document.getElementById("card-serial-number");
-				cardSerialNumberInput.value = data.data.serial_number;
+		// wait for 20 seconds then make get request to read card
+		setTimeout(() => {
+			
+			// Fetch most recent card data
+			fetch("https://project-webapp.onrender.com/read-card/latest", {
+				method: "GET",
+				headers: {
+					Authorization: "Bearer " + token
+				}
 			})
-			.catch((error) => {
-				console.error("Error fetching most recent card data:", error);
-			});
+				.then((response) => response.json())
+				.then((data) => {
+					const cardSerialNumberInput = document.getElementById("card-serial-number");
+					cardSerialNumberInput.value = data.data.serial_number;
+				})
+				.catch((error) => {
+					console.error("Error fetching most recent card data:", error);
+				});
+		}, 20000);
 	});
 
 	// Add event listener for submitting card reader modal form
