@@ -34,6 +34,10 @@ exports.checkNewCard = async (req, res, next) => {
 	const schema = joi.object({
 		serial_number: joi.string().required(),
 		card_holder: joi.string().required(),
+		owner_name: joi.string().required(),
+		owner_email: joi.string().email().required(),
+		owner_department: joi.string().required(),
+		owner_matric: joi.string().required()
 	});
 
 	try {
@@ -42,11 +46,11 @@ exports.checkNewCard = async (req, res, next) => {
 		return res.status(422).json({ message: error.details[0].message, data: null });
 	}
 	next();
-}
+};
 
 exports.checkEntryDetails = async (req, res, next) => {
 	const schema = joi.object({
-		card_serial_number: joi.string().required(),
+		card_serial_number: joi.string().required()
 	});
 
 	try {
@@ -55,4 +59,4 @@ exports.checkEntryDetails = async (req, res, next) => {
 		return res.status(422).json({ message: error.details[0].message, data: null });
 	}
 	next();
-}
+};

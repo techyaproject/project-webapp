@@ -6,6 +6,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const cardsRoutes = require("./routes/cardsRoutes");
 const entriesRoutes = require("./routes/entriesRoutes");
+const readCardRoutes = require("./routes/readCardRoutes");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app
 	.use("/auth", authRoutes)
 	.use("/cards", cardsRoutes)
 	.use("/entries-log", entriesRoutes)
+	.use("/read-card", readCardRoutes)
 
 	.use("*", (req, res) => {
 		return res.status(404).json({
