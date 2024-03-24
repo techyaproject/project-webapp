@@ -86,48 +86,48 @@
 				<a href="#entries-section" class="sidebar-item">Entries</a>
 			</div>
 
-			<!-- Cards Section -->
-			<div id="cards-section" class="section active">
-				<h2>Cards</h2>
-				<div class="card-list">
-					<!-- Card items will be rendered here -->
-				</div>
-				<h3>Add New Card</h3>
-				<form id="add-card-form">
-					<label for="owner-name">Owner's Full Name:</label>
-					<input type="text" id="owner-name" name="owner_name" required />
-					<label for="owner-email">Owner's Email:</label>
-					<input type="email" id="owner-email" name="owner_email" required />
-					<label for="owner-department">Owner's Department:</label>
-					<input type="text" id="owner-department" name="owner_department" required />
-					<label for="owner-matric">Owner's Matric Number:</label>
-					<input type="text" id="owner-matric" name="owner_matric" required />
-					<button type="submit" id="add-card-btn">Add Card</button>
-				</form>
-			</div>
-
-			<!-- Entries Section -->
-			<div id="entries-section" class="section">
-				<h2>Entries</h2>
-				<div class="entry-list">
-					<!-- Entry items will be rendered here -->
-				</div>
-			</div>
-
-			<!-- Modal for Card Reader -->
-			<div id="card-reader-modal" class="modal">
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<h2>Swipe Card on Reader</h2>
-					<p>Please swipe the card on the reader...</p>
-					<div class="spinner">
-						<h3><i>Fetching card serial number. Kindly hold on...</i></h3>
-					</div>
-					<form id="add-card-from-reader-form">
-						<label for="card-serial-number">Card Serial Number:</label>
-						<input type="text" id="card-serial-number" name="card-serial-number" readonly />
-						<button type="submit" id="create-card-btn">Create Card</button>
+			<div class="content">
+				<!-- Cards Section -->
+				<div id="cards-section" class="section active">
+					<h3>Add New Card</h3>
+					<form id="add-card-form">
+						<label for="owner-name">Owner's Full Name:</label>
+						<input type="text" id="owner-name" name="owner_name" required />
+						<label for="owner-email">Owner's Email:</label>
+						<input type="email" id="owner-email" name="owner_email" required />
+						<label for="owner-department">Owner's Department:</label>
+						<input type="text" id="owner-department" name="owner_department" required />
+						<label for="owner-matric">Owner's Matric Number:</label>
+						<input type="text" id="owner-matric" name="owner_matric" required />
+						<button type="submit" id="add-card-btn">Add Card</button>
 					</form>
+					<h2>Cards</h2>
+					<div class="card-list">
+						<!-- Card items will be rendered here -->
+					</div>
+				</div>
+
+				<!-- Entries Section -->
+				<div id="entries-section" class="section">
+					<h2>Entries</h2>
+					<div class="entry-list">
+						<!-- Entry items will be rendered here -->
+					</div>
+				</div>
+
+				<!-- Modal for Card Reader -->
+				<div id="card-reader-modal" class="modal">
+					<div class="modal-content">
+						<span class="close">&times;</span>
+						<h2>Swipe Card on Reader</h2>
+						<p>Please swipe the card on the reader...</p>
+						<div class="spinner"></div>
+						<form id="add-card-from-reader-form">
+							<label for="card-serial-number">Card Serial Number:</label>
+							<input type="text" id="card-serial-number" name="card-serial-number" readonly />
+							<button type="submit" id="create-card-btn">Create Card</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</main>

@@ -339,6 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const cardList = document.querySelector(".card-list");
 		cardList.innerHTML = ""; // Clear existing cards
 
+		cards = cards.reverse(); // Reverse the order of cards
 		cards.forEach((card) => {
 			const cardItem = document.createElement("div");
 			cardItem.classList.add("card");
@@ -375,6 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const entryList = document.querySelector(".entry-list");
 		entryList.innerHTML = ""; // Clear existing entries
 
+		entries = entries.reverse(); // Reverse the order of entries
 		entries.forEach((entry) => {
 			const entryItem = document.createElement("div");
 			entryItem.classList.add("entry");
@@ -399,7 +401,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// wait for 20 seconds then make get request to read card
 		setTimeout(() => {
-			
 			// Fetch most recent card data
 			fetch("https://project-webapp.onrender.com/read-card/latest", {
 				method: "GET",
@@ -415,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				.catch((error) => {
 					console.error("Error fetching most recent card data:", error);
 				});
-		}, 20000);
+		}, 10000);
 	});
 
 	// Add event listener for submitting card reader modal form
