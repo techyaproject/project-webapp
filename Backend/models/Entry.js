@@ -4,7 +4,6 @@ const entrychema = new mongoose.Schema({
 	card_serial_number: {
 		type: String,
 		required: [true, "Please enter card serial number"],
-		unique: true
 	},
 	card_holder: {
 		type: String,
