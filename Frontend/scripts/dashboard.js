@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			entryItem.classList.add("entry");
 			entryItem.innerHTML = `
 					<p><strong>Serial Number:</strong> ${entry.card_serial_number}</p>
-					<p><strong>Card Holder:</strong> ${entry.card_holder}</p>
+					<p><strong>Card Holder:</strong> ${entry.owner_name}</p>
 					<p><strong>Entry Time:</strong> ${entry.entry_time}</p>
 					<p><strong>Entry Status:</strong> ${entry.entry_status}</p>
 			  `;
@@ -397,8 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const cardReaderModal = document.getElementById("card-reader-modal");
 		cardReaderModal.style.display = "block";
 
-		try {
-			// Fetch most recent card data
+		// Fetch most recent card data
 		fetch("https://project-webapp.onrender.com/read-card/latest", {
 			method: "GET",
 			headers: {
@@ -407,16 +406,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log("Most recent card data:", data);
 				const cardSerialNumberInput = document.getElementById("card-serial-number");
-				cardSerialNumberInput.value = data.card_serial_number;
+				cardSerialNumberInput.value = data.data.serial_number;
 			})
 			.catch((error) => {
 				console.error("Error fetching most recent card data:", error);
 			});
-		} catch (error) {
-			console.error("Error fetching most recent card data:", error);
-		}
 	});
 
 	// Add event listener for submitting card reader modal form
@@ -433,10 +428,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Create card object
 		const newCard = {
-			card_holder: ownerName,
-			email: ownerEmail,
-			department: ownerDepartment,
-			matric_number: ownerMatric,
+			owner_name: ownerName,
+			owner_email: ownerEmail,
+			owner_department: ownerDepartment,
+			owner_matric: ownerMatric,
 			serial_number: cardSerialNumber
 		};
 

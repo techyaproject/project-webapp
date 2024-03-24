@@ -33,7 +33,6 @@ exports.checkLogin = async (req, res, next) => {
 exports.checkNewCard = async (req, res, next) => {
 	const schema = joi.object({
 		serial_number: joi.string().required(),
-		card_holder: joi.string().required(),
 		owner_name: joi.string().required(),
 		owner_email: joi.string().email().required(),
 		owner_department: joi.string().required(),

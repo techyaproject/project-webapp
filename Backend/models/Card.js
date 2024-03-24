@@ -22,10 +22,6 @@ const cardSchema = new mongoose.Schema({
 		required: [true, "Please enter card serial number"],
 		unique: true
 	},
-	card_holder: {
-		type: String,
-		required: [true, "Please enter the card holder's name"]
-	},
 	active: {
 		type: Boolean,
 		default: true
