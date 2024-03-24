@@ -397,7 +397,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		const cardReaderModal = document.getElementById("card-reader-modal");
 		cardReaderModal.style.display = "block";
 
-		// Fetch most recent card data
+		try {
+			// Fetch most recent card data
 		fetch("https://project-webapp.onrender.com/read-card/latest", {
 			method: "GET",
 			headers: {
@@ -406,12 +407,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		})
 			.then((response) => response.json())
 			.then((data) => {
+				console.log("Most recent card data:", data);
 				const cardSerialNumberInput = document.getElementById("card-serial-number");
 				cardSerialNumberInput.value = data.card_serial_number;
 			})
 			.catch((error) => {
 				console.error("Error fetching most recent card data:", error);
 			});
+		} catch (error) {
+			console.error("Error fetching most recent card data:", error);
+		}
 	});
 
 	// Add event listener for submitting card reader modal form

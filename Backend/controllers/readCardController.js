@@ -3,7 +3,7 @@ const ReadCard = require("../models/Card-Read");
 
 exports.getMostRecentReadCard = async (req, res) => {
 	try {
-      const mostRecentCard = await Card.findOne().sort({ created_at: -1 });
+      const mostRecentCard = await ReadCard.findOne().sort({ created_at: -1 });
       if (!mostRecentCard) {
          return res.status(404).json({
             message: "No card found!",
