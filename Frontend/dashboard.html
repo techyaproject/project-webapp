@@ -16,74 +16,12 @@
 			</div>
 		</nav>
 
-		<!-- <div class="sidebar">
-			<ul class="sidebar-menu">
-				<li><a href="#cards-section" class="sidebar-item active">Cards</a></li>
-				<li><a href="#entries-section" class="sidebar-item">Entries</a></li>
-			</ul>
-		</div>
-
-		<div class="content">
-			<div id="cards-section" class="section active">
-				<h2>Cards</h2>
-				<div class="card-list">
-					<div class="card">
-                    <p><strong>Card Holder:</strong> John Doe</p>
-                    <button class="delete-btn">Delete</button>
-					</div>
-				</div>
-				<h3>Add New Card</h3>
-				<form id="add-card-form">
-                <label for="serial-number">Serial Number:</label>
-                <input type="text" id="serial-number" name="serial_number" required>
-                <label for="card-holder">Card Holder:</label>
-                <input type="text" id="card-holder" name="card_holder" required>
-                <button type="submit">Add Card</button>
-                </form>
-
-				<form id="add-card-form">
-					<label for="full-name">Holder's Full Name:</label>
-					<input type="text" id="full-name" name="full_name" required />
-					<label for="email">Holder's Email:</label>
-					<input type="email" id="email" name="email" required />
-					<label for="department">Holder's Department:</label>
-					<input type="text" id="department" name="department" required />
-					<button type="submit" id="open-add-card-modal">Next Step</button>
-				</form>
-
-				<div id="add-card-serial-num-modal" class="modal add-card-modal">
-					<div class="modal-content">
-						<span id="close-add-card-modal" class="close">&times;</span>
-						<h2>Enter Card Serial Number</h2>
-						<form id="add-card-serial-form">
-							<label for="serial-number">Serial Number:</label>
-							<input type="text" id="serial-number" name="serial_number" required />
-							<button type="submit">Add Card</button>
-						</form>
-					</div>
-				</div>
-			</div>
-
-			<div id="entries-section" class="section">
-				<h2>Entries</h2>
-				Display entries from the database here
-				<div class="entry-list">
-					Sample Entry
-					<div class="entry">
-						<p><strong>Serial Number:</strong> ABC123</p>
-                    <p><strong>Card Holder:</strong> John Doe</p>
-                    <p><strong>Entry Time:</strong> 2024-03-20 12:00 PM</p>
-                    <p><strong>Entry Status:</strong> Allowed</p>
-					</div>
-				</div>
-			</div>
-		</div> -->
-
 		<main>
 			<!-- Sidebar -->
 			<div class="sidebar">
 				<a href="#cards-section" class="sidebar-item active">Cards</a>
 				<a href="#entries-section" class="sidebar-item">Entries</a>
+				<a href="#manage-admins-section" class="sidebar-item" id="manage-admin-select">Manage Admins</a>
 			</div>
 
 			<div class="content">
@@ -115,19 +53,39 @@
 					</div>
 				</div>
 
-				<!-- Modal for Card Reader -->
-				<div id="card-reader-modal" class="modal">
-					<div class="modal-content">
-						<span class="close">&times;</span>
-						<h2>Swipe Card on Reader</h2>
-						<p>Please swipe the card on the reader...</p>
-						<div class="spinner"></div>
-						<form id="add-card-from-reader-form">
-							<label for="card-serial-number">Card Serial Number:</label>
-							<input type="text" id="card-serial-number" name="card-serial-number" readonly />
-							<button type="submit" id="create-card-btn">Create Card</button>
-						</form>
+				<!-- Manage Admins Section -->
+				<div id="manage-admins-section" class="section">
+					<h2>Add New Admin</h2>
+					<form id="add-admin-form">
+						<label for="admin-firstname">First name:</label>
+						<input type="text" id="admin-firstname" name="first_name" required />
+						<label for="admin-lastname">Last name:</label>
+						<input type="text" id="admin-lastname" name="last_name" required />
+						<label for="admin-email">Email:</label>
+						<input type="email" id="admin-email" name="admin_email" required />
+						<label for="admin-password">Password:</label>
+						<input type="password" id="admin-password" name="password" required />
+						<button type="submit" id="add-admin-btn">Add Admin</button>
+					</form>
+					<h2>Admins</h2>
+					<div class="admin-list">
+						<!-- Admin items will be rendered here -->
 					</div>
+				</div>
+			</div>
+
+			<!-- Modal for Card Reader -->
+			<div id="card-reader-modal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<h2>Swipe Card on Reader</h2>
+					<p>Please swipe the card on the reader...</p>
+					<div class="spinner"></div>
+					<form id="add-card-from-reader-form">
+						<label for="card-serial-number">Card Serial Number:</label>
+						<input type="text" id="card-serial-number" name="card-serial-number" readonly />
+						<button type="submit" id="create-card-btn">Create Card</button>
+					</form>
 				</div>
 			</div>
 		</main>

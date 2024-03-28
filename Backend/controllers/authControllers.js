@@ -75,6 +75,21 @@ exports.signin = async (req, res) => {
 	}
 };
 
+exports.getAllAdmins = async (req, res) => {
+	try {
+		const admins = await User.find({});
+		return res.status(200).json({
+			message: "Admins fetched successfully",
+			data: admins
+		});
+	} catch (error) {
+		return res.status(500).json({
+			message: error.message,
+			data: null
+		});
+	}
+};
+
 exports.signout = async (req, res) => {
 	try {
 		return res.json({

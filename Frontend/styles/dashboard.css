@@ -265,6 +265,44 @@ form button:hover {
 	margin: 0 auto 20px;
 }
 
+/* Manage Admin Section */
+#manage-admins-section {
+	display: none; /* Hide Manage Admins section by default */
+}
+
+/* Add styles for the Add Admin form */
+#add-admin-form {
+	margin-bottom: 20px;
+}
+
+#add-admin-form label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+#add-admin-form input[type="text"],
+#add-admin-form input[type="email"],
+#add-admin-form input[type="password"] {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+#add-admin-form button {
+	padding: 10px 20px;
+	background-color: #4caf50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#add-admin-form button:hover {
+	background-color: #45a049;
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
