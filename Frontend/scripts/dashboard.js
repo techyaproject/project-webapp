@@ -4,7 +4,6 @@
 // 		window.location.href = "index.html";
 // 	}
 
-
 // 	const sidebarItems = document.querySelectorAll(".sidebar-item");
 // 	const sections = document.querySelectorAll(".section");
 // 	const loggedinUser = document.getElementById("loggedin-user");
@@ -313,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			// Add 'active' class to clicked sidebar item
 			this.classList.add("active");
-			if(this.id === "manage-admin-select") {
+			if (this.id === "manage-admin-select") {
 				manageAdminsSection.style.display = "block";
 			}
 
@@ -512,6 +511,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	function renderCards(cards) {
 		const cardList = document.querySelector(".card-list");
 		cardList.innerHTML = ""; // Clear existing cards
+		manageAdminsSection.style.display = "none";
+
 
 		cards = cards.reverse(); // Reverse the order of cards
 		cards.forEach((card) => {
@@ -606,7 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				setTimeout(() => {
 					info.style.display = "none";
-				}, 3000)
+				}, 3000);
 				// Fetch and render updated admins
 				fetchAdmins(token);
 			})
@@ -619,7 +620,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				setTimeout(() => {
 					info.style.display = "none";
-				}, 3000)
+				}, 3000);
 			});
 	});
 
@@ -685,17 +686,53 @@ document.addEventListener("DOMContentLoaded", function () {
 			.then((response) => response.json())
 			.then((data) => {
 				console.log("New card added:", data);
+				if (data.message !== "Card created successfully") {
+					// Close modal
+					const cardReaderModal = document.getElementById("card-reader-modal");
+					cardReaderModal.style.display = "none";
+					// reset both forms
+					addCardForm.reset();
+					cardReaderForm.reset();
+
+					const info = document.getElementById("add-card-info");
+					info.style.display = "block";
+					info.innerHTML = data.message;
+					info.style.color = "red";
+					setTimeout(() => {
+						info.style.display = "none";
+					}, 3000);
+
+					return;
+				}
 				// Close modal
 				const cardReaderModal = document.getElementById("card-reader-modal");
 				cardReaderModal.style.display = "none";
 				// reset both forms
 				addCardForm.reset();
 				cardReaderForm.reset();
+
+				// add info for 3 seconds
+				const info = document.getElementById("add-card-info");
+				info.style.display = "block";
+				info.innerHTML = "Card successfully added";
+				info.style.color = "green";
+				setTimeout(() => {
+					info.style.display = "none";
+				}, 3000);
+
 				// Fetch and render updated cards
 				fetchCards(token);
 			})
 			.catch((error) => {
 				console.error("Error adding new card:", error);
+				// add info for 3 seconds
+				const info = document.getElementById("add-card-info");
+				info.style.display = "block";
+				info.innerHTML = error.message;
+				info.style.color = "red";
+				setTimeout(() => {
+					info.style.display = "none";
+				}, 3000);
 			});
 	});
 
@@ -705,4 +742,52 @@ document.addEventListener("DOMContentLoaded", function () {
 		const cardReaderModal = document.getElementById("card-reader-modal");
 		cardReaderModal.style.display = "none";
 	});
+
+	// Add event listener for clicking download entries button
+	const downloadEntriesBtn = document.getElementById("download-entries-btn");
+	downloadEntriesBtn.addEventListener("click", function () {
+		downloadEntries();
+	});
+
+	function downloadEntries() {
+		// Fetch all entries
+		fetch("https://project-webapp.onrender.com/entries-log", {
+			method: "GET",
+			headers: {
+				Authorization: "Bearer " + token
+			}
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				// Convert entries to a downloadable format (e.g., CSV)
+				const csvContent = convertEntriesToCSV(data.data.allEntries);
+
+				// Create a Blob object containing the CSV data
+				const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8" });
+
+				// Create a temporary anchor element to trigger the download
+				const downloadLink = document.createElement("a");
+				downloadLink.href = window.URL.createObjectURL(blob);
+				downloadLink.download = "entries.csv";
+				document.body.appendChild(downloadLink);
+
+				// Trigger the download
+				downloadLink.click();
+
+				// Cleanup
+				document.body.removeChild(downloadLink);
+			})
+			.catch((error) => {
+				console.error("Error fetching entries:", error);
+			});
+	}
+
+	function convertEntriesToCSV(entries) {
+		// Assuming entries is an array of objects with similar structure
+		let csvContent = "Serial Number, Card Holder, Entry Time, Entry Status\n";
+		entries.forEach((entry) => {
+			csvContent += `${entry.card_serial_number},${entry.owner_name},${entry.entry_time},${entry.entry_status}\n`;
+		});
+		return csvContent;
+	}
 });
