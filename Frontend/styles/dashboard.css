@@ -18,6 +18,13 @@ body {
 .navbar-brand h2 {
 	margin: 0;
 }
+#logout-btn {
+	color: rgb(237, 61, 61);
+	text-decoration: none;
+}
+#logout-btn:hover {
+	text-decoration: underline;
+}
 
 /* Main content styling */
 main {
@@ -301,6 +308,15 @@ form button:hover {
 
 #add-admin-form button:hover {
 	background-color: #45a049;
+}
+.admin-item {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+#add-admin-info {
+	display: none;
 }
 
 @keyframes spin {

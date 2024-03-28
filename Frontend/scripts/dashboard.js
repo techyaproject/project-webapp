@@ -4,6 +4,7 @@
 // 		window.location.href = "index.html";
 // 	}
 
+
 // 	const sidebarItems = document.querySelectorAll(".sidebar-item");
 // 	const sections = document.querySelectorAll(".section");
 // 	const loggedinUser = document.getElementById("loggedin-user");
@@ -307,10 +308,14 @@ document.addEventListener("DOMContentLoaded", function () {
 			// Remove 'active' class from all sidebar items
 			sidebarItems.forEach(function (item) {
 				item.classList.remove("active");
+				manageAdminsSection.style.display = "none";
 			});
 
 			// Add 'active' class to clicked sidebar item
 			this.classList.add("active");
+			if(this.id === "manage-admin-select") {
+				manageAdminsSection.style.display = "block";
+			}
 
 			// Hide all sections
 			sections.forEach(function (section) {
@@ -410,10 +415,10 @@ document.addEventListener("DOMContentLoaded", function () {
 					localStorage.removeItem("username");
 					window.location.href = "index.html";
 				}
-				if (data.data.admins.length === 0) {
+				if (data.data.length === 0) {
 					renderNoAdmins();
 				} else {
-					renderAdmins(data.data.admins);
+					renderAdmins(data.data);
 				}
 			})
 			.catch((error) => {
@@ -496,8 +501,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			const adminItem = document.createElement("div");
 			adminItem.classList.add("admin-item");
 			adminItem.innerHTML = `
-				  <p><strong>Username:</strong> ${admin.username}</p>
-				  <p><strong>Role:</strong> ${admin.role}</p>
+				  <p><strong>First Name:</strong> ${admin.first_name}</p>
+				  <p><strong>Last Name:</strong> ${admin.last_name}</p>
+				  <p><strong>Email:</strong> ${admin.email}</p>
 			 `;
 			adminList.appendChild(adminItem);
 		});
@@ -588,14 +594,32 @@ document.addEventListener("DOMContentLoaded", function () {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log("New admin added:", data.data.newUser);
+				console.log("New admin added:", data.data);
+				const info = document.getElementById("add-admin-info");
 				// Clear form fields
 				addAdminForm.reset();
+
+				// Display success message in the info for 3 seconds
+				info.style.display = "block";
+				info.innerHTML = "Admin successfully added";
+				info.style.color = "green";
+
+				setTimeout(() => {
+					info.style.display = "none";
+				}, 3000)
 				// Fetch and render updated admins
 				fetchAdmins(token);
 			})
 			.catch((error) => {
 				console.error("Error adding new admin:", error);
+				// Display success message in the info for 3 seconds
+				info.style.display = "block";
+				info.innerHTML = error.message;
+				info.style.color = "red";
+
+				setTimeout(() => {
+					info.style.display = "none";
+				}, 3000)
 			});
 	});
 
