@@ -513,7 +513,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		cardList.innerHTML = ""; // Clear existing cards
 		manageAdminsSection.style.display = "none";
 
-
 		cards = cards.reverse(); // Reverse the order of cards
 		cards.forEach((card) => {
 			const cardItem = document.createElement("div");
@@ -522,8 +521,10 @@ document.addEventListener("DOMContentLoaded", function () {
 					<p><strong>Serial Number:</strong> ${card.serial_number}</p>
 					<p><strong>Card Holder:</strong> ${card.owner_name}</p>
 					<p><strong>Card Status:</strong> ${card.active ? "Active" : "Inactive"}</p>
-					<button class="delete-btn" id="delete-${card._id}">Delete</button>
-			  `;
+					<div class="card-buttons">
+						<button class="delete-btn" id="delete-${card._id}">Delete</button>
+						<button class="deactivate-btn" id="deactivate-${card._id}">${card.active ? "Deactivate" : "Activate"}</button>
+					</div>			  `;
 			cardList.appendChild(cardItem);
 
 			// Add event listener to delete card
@@ -542,6 +543,31 @@ document.addEventListener("DOMContentLoaded", function () {
 					})
 					.catch((error) => {
 						console.error("Error deleting card:", error);
+					});
+			});
+
+			// Add event listener to deactivate card
+			const deactivateButton = cardItem.querySelector(".deactivate-btn");
+			deactivateButton.addEventListener("click", function () {
+				// change the text of the button to "Loading..."
+				deactivateButton.innerHTML = "Loading...";
+				
+				const newStatus = !card.active;
+				fetch(`https://project-webapp.onrender.com/cards/${card._id}`, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + token
+					},
+					body: JSON.stringify({ active: newStatus })
+				})
+					.then((response) => response.json())
+					.then((data) => {
+						console.log("Card updated:", data);
+						fetchCards(token);
+					})
+					.catch((error) => {
+						console.error("Error updating card:", error);
 					});
 			});
 		});

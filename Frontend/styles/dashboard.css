@@ -106,6 +106,17 @@ main {
 	background-color: #cc0000;
 }
 
+.deactivate-btn{
+	background-color: grey;
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+.deactivate-btn:hover {
+	background-color: #333;
+}
+
 /* Entry Styles */
 .entry-list {
 	margin-bottom: 20px;

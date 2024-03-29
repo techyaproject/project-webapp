@@ -57,6 +57,16 @@ exports.createEntry = async (req, res) => {
 			});
 		}
 
+		if(foundCard.active === false) {
+			EntryDetails.card_holder = foundCard.card_holder;
+			EntryDetails.entry_status = "disallowed";
+			const rejectedEntry = await Entry.create(EntryDetails);
+			return res.status(400).json({
+				message: "Card has been deactivated. Kindly contact Admin to gain access!",
+				data: rejectedEntry
+			});
+		}
+
 		EntryDetails.card_holder = foundCard.card_holder;
 		EntryDetails.entry_status = "admitted";
 
