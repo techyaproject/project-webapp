@@ -1,15 +1,13 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//    const themeToggle = document.getElementById('theme-toggle');
-//    const body = document.body;
+document.addEventListener("DOMContentLoaded", function () {
+	const toggleBtn = document.getElementById("toggle-btn");
+	const toggleIcon = document.getElementById("toggle-icon");
 
-//    themeToggle.addEventListener('change', function() {
-//        if (this.checked) {
-//            body.classList.add('dark-mode');
-//        } else {
-//            body.classList.remove('dark-mode');
-//        }
-//    });
-// });
+	toggleBtn.addEventListener("click", () => {
+		document.body.classList.toggle("dark-mode");
+		toggleIcon.classList.toggle("fa-sun");
+		toggleIcon.classList.toggle("fa-moon");
+	});
+});
 
 document.addEventListener("DOMContentLoaded", function () {
 	const loginLink = document.getElementById("login-link");

@@ -1,86 +1,34 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Building Access Control System</title>
-		<link rel="stylesheet" href="./styles/index.css" />
-	</head>
-	<body>
-		<header>
-			<nav>
-				<div class="logo">
-					<h1>Building Access Control</h1>
-				</div>
-				<ul class="nav-links">
-					<li><a href="#" id="login-link">Login</a></li>
-					<li><a href="#" id="register-link">Register</a></li>
-				</ul>
-				<div class="theme-toggle" id="theme-toggle">
-					<i class="fas fa-sun"></i>
-				</div>
-			</nav>
-		</header>
-
-		<main>
-			<section class="hero">
-				<div class="hero-content">
-					<h2>Secure and Efficient Building Access Control System</h2>
-					<p>
-						Manage access to your building with ease using our advanced RFID card scanning
-						technology.
-					</p>
-				</div>
-			</section>
-
-			<section class="what-we-do">
-				<h2>What You Can Do</h2>
-				<div class="features">
-					<div class="feature">
-						<h3>Add New Admins</h3>
-						<p>Easily register new admins to manage access control settings.</p>
-					</div>
-					<div class="feature">
-						<h3>Manage Access Cards</h3>
-						<p>Add, edit, and remove access cards for authorized personnel.</p>
-					</div>
-					<div class="feature">
-						<h3>View Access Logs</h3>
-						<p>Monitor building access history and track entry records.</p>
-					</div>
-				</div>
-			</section>
-
-			<section class="cta">
-				<h2>Ready to Get Started?</h2>
-				<p>Register now to unlock the full potential of our building access control system.</p>
-				<a href="#" id="register-cta" class="btn">Register Now</a>
-			</section>
-		</main>
-
-	</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Building Access Control System</title>
+		<script src="https://kit.fontawesome.com/935c6aaa3e.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="./styles/index.css" />
 	</head>
 	<body>
 		<header>
 			<nav>
 				<div class="logo">
+					<img
+						width="78"
+						height="78"
+						src="https://img.icons8.com/external-filled-color-icons-papa-vector/78/external-Access-Control-online-security-filled-color-icons-papa-vector.png"
+						alt="external-Access-Control-online-security-filled-color-icons-papa-vector"
+					/>
 					<h1>Building Access Control</h1>
 				</div>
-				<ul class="nav-links">
-					<li><a href="#" id="login-link">Login</a></li>
-					<!-- <li><a href="#" id="register-link">Register</a></li> -->
-				</ul>
-				<div class="theme-toggle" id="theme-toggle">
-					<i class="fas fa-sun"></i>
+				<div class="link-and-theme">
+					<ul class="nav-links">
+						<li><a href="#" id="login-link">Login</a></li>
+					</ul>
+
+					<div class="toggle-container">
+						<button id="toggle-btn" class="toggle-btn">
+							<i id="toggle-icon" class="fas fa-sun"></i>
+						</button>
+					</div>
 				</div>
 			</nav>
 		</header>
@@ -94,6 +42,9 @@
 						Manage access to your building with ease using our advanced RFID card scanning
 						technology.
 					</p>
+				</div>
+				<div class="hero-img">
+					<i class="fa-solid fa-id-card-clip fa-flip"></i>
 				</div>
 			</section>
 

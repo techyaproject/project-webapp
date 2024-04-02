@@ -1,16 +1,23 @@
-/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Wellfleet&display=swap");
+
 body {
-	font-family: "Roboto", sans-serif;
 	margin: 0;
 	padding: 0;
 	background-color: #f8f9fa; /* default background color */
 	color: #212529; /* default text color */
+	font-family: "Montserrat", sans-serif;
+	font-weight: normal;
 }
-
+h1, h2, h3{
+	font-family: "Wellfleet", monospace;
+}
 header {
-	background-color: #007bff;
-	padding: 10px;
+	/* background-color: #007bff; */
+	padding: 2em 3em;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+header h1 {
+	font-family: "Wellfleet", monospace;
 }
 
 nav {
@@ -19,10 +26,19 @@ nav {
 	justify-content: space-between;
 }
 
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
 .logo h1 {
-	color: #fff;
+	/* color: #fff; */
 	margin: 0;
 	font-size: 24px;
+}
+.logo img {
+	width: 70px;
+	height: 70px;
 }
 
 .nav-links {
@@ -32,24 +48,74 @@ nav {
 	display: flex;
 }
 
-.nav-links li {
-	margin-left: 20px;
-}
-
 .nav-links a {
-	color: #fff;
+	color: #0056b3;
 	text-decoration: none;
 	transition: color 0.3s ease;
+	font-size: 18px;
+	font-weight: bolder;
+}
+.nav-links a:visited {
+	color: inherit;
 }
 
 .nav-links a:hover {
 	color: #0056b3;
+	text-decoration: underline;
+}
+.link-and-theme {
+	display: flex;
+	align-items: center;
+	gap: 2em;
 }
 
-.theme-toggle {
-	color: #fff;
+/* color: #fff;
 	cursor: pointer;
 }
+.theme-toggle i {
+	font-size: 24px;
+} */
+
+.toggle-container {
+	position: relative;
+}
+
+.toggle-btn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	padding: 0;
+	font-size: 24px;
+}
+
+.toggle-btn:focus {
+	outline: none;
+}
+
+.fa-moon {
+	display: none;
+	color: white;
+}
+
+/* Dark mode styles */
+.dark-mode {
+	background-color: #333; /* Dark mode background color */
+	color: #fff; /* Dark mode text color */
+}
+
+.dark-mode .fa-sun {
+	display: none;
+}
+
+.dark-mode .fa-moon {
+	display: block;
+}
+/* .dark-mode .dark-head{
+	background-color: #333;
+	color: #fff;
+
+} */
 
 .main-content {
 	padding: 20px;
@@ -57,14 +123,24 @@ nav {
 
 /* Hero Section */
 .hero {
-	background-color: #343a40;
-	color: #fff;
+	/* background-color: #343a40; */
+	/* color: #fff; */
 	padding: 80px 20px;
 	text-align: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
+.hero-content {
+	max-width: 40%;
+}
 .hero-content h2 {
 	margin-bottom: 20px;
+	font-family: "Wellfleet", monospace;
+}
+.hero-img i {
+	font-size: 10em;
 }
 
 /* What We Do Section */
@@ -75,7 +151,8 @@ nav {
 
 .features {
 	display: flex;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
+	gap: 2em;
 }
 
 .feature {
@@ -179,18 +256,24 @@ nav {
 	display: none;
 }
 
-#register-modal, #login-modal {
+#register-modal,
+#login-modal {
 	display: none;
 }
 
 /* Media Queries */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+	.hero {
+		flex-direction: column;
+	}
 	.features {
 		justify-content: space-around;
+		flex-direction: column;
 	}
 
 	.feature {
-		width: calc(33.33% - 40px);
+		width: calc(95% - 40px);
+		/* width: 100%; */
 		margin: 0 20px;
 	}
 
