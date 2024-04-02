@@ -8,7 +8,9 @@ body {
 	font-family: "Montserrat", sans-serif;
 	font-weight: normal;
 }
-h1, h2, h3{
+h1,
+h2,
+h3 {
 	font-family: "Wellfleet", monospace;
 }
 header {
@@ -17,6 +19,7 @@ header {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 header h1 {
+	color: #007bff;
 	font-family: "Wellfleet", monospace;
 }
 
@@ -49,7 +52,7 @@ nav {
 }
 
 .nav-links a {
-	color: #0056b3;
+	color: #007bff;
 	text-decoration: none;
 	transition: color 0.3s ease;
 	font-size: 18px;
@@ -148,6 +151,11 @@ nav {
 	background-color: #f0f0f0;
 	padding: 50px 20px;
 }
+.what-we-do h2 {
+	margin-bottom: 2em;
+	color: #007bff;
+	margin-left: 1em;
+}
 
 .features {
 	display: flex;
@@ -204,37 +212,45 @@ nav {
 	color: #fff;
 }
 
-/* Modal */
+/* The Modal (background) */
 .modal {
-	display: none;
-	position: fixed;
-	z-index: 1;
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
 	left: 0;
 	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-	backdrop-filter: blur(5px); /* Apply blur effect */
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
+/* Modal Content/Box */
 .modal-content {
-	background-color: #fff;
+	background-color: #fefefe;
+	margin: 10% auto;
 	padding: 20px;
-	border-radius: 10px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: 1px solid #888;
+	width: 50%;
+}
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+}
+.modal-body {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
 }
 
+/* The Close Button */
 .close {
 	color: #aaa;
-	position: absolute;
-	top: 10px;
-	right: 15px;
-	font-size: 28px;
+	/* float: right;
+	top: 0; */
+	font-size: 32pt;
 	font-weight: bold;
-	cursor: pointer;
 }
 
 .close:hover,
@@ -244,27 +260,62 @@ nav {
 	cursor: pointer;
 }
 
-/* Adjust modal size as needed */
-#login-modal .modal-content,
-#register-modal .modal-content {
-	width: 90%;
-	max-width: 400px;
-}
-
-#info-reg,
-#info-login {
-	display: none;
-}
-
 #register-modal,
 #login-modal {
 	display: none;
 }
 
+.form {
+	display: flex;
+	flex-direction: column;
+}
+.form label {
+	font-size: 18px;
+	margin-bottom: 1em;
+}
+.form input {
+	margin-bottom: 1em;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+.form button {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 18px;
+}
+.form button:hover {
+	background-color: #0056b3;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
+	nav {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.logo h1 {
+		font-size: 16pt;
+		text-align: center;
+	}
+	.link-and-theme {
+		margin-top: 20px;
+	}
+	.nav-links a {
+		font-size: 16pt;
+	}
+
 	.hero {
 		flex-direction: column;
+	}
+	.hero-content {
+		max-width: 80%;
 	}
 	.features {
 		justify-content: space-around;
@@ -287,5 +338,14 @@ nav {
 
 	.btn {
 		font-size: 18px;
+	}
+
+	.modal-content {
+		margin: 20% auto;
+		width: 70%;
+	}
+	.form label {
+		font-size: 16px;
+		margin-bottom: 0.7em;
 	}
 }

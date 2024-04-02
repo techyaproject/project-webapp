@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Building Access Control Dashboard</title>
 		<link rel="stylesheet" href="./styles/dashboard.css" />
+		<script src="https://kit.fontawesome.com/935c6aaa3e.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<nav class="navbar">
@@ -13,6 +14,7 @@
 			</div>
 			<div class="navbar-links">
 				<a href="#" class="logout-btn" id="logout-btn">Logout</a>
+				<i class="fa-solid fa-right-from-bracket"></i>
 			</div>
 		</nav>
 
@@ -21,13 +23,15 @@
 			<div class="sidebar">
 				<a href="#cards-section" class="sidebar-item active">Cards</a>
 				<a href="#entries-section" class="sidebar-item">Entries</a>
-				<a href="#manage-admins-section" class="sidebar-item" id="manage-admin-select">Manage Admins</a>
+				<a href="#manage-admins-section" class="sidebar-item" id="manage-admin-select"
+					>Manage Admins</a
+				>
 			</div>
 
 			<div class="content">
 				<!-- Cards Section -->
 				<div id="cards-section" class="section active">
-					<h3>Add New Card</h3>
+					<h3>Add New User Card</h3>
 					<form id="add-card-form">
 						<label for="owner-name">Full Name:</label>
 						<input type="text" id="owner-name" name="owner_name" required />

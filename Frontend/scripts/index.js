@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const loginModal = document.getElementById("login-modal");
 	const registerModal = document.getElementById("register-modal");
 	const closeModalButtons = document.querySelectorAll(".close");
-	const themeToggle = document.getElementById("theme-toggle");
+	// const themeToggle = document.getElementById("theme-toggle");
 	const body = document.body;
 
 	loginLink.addEventListener("click", function (event) {
@@ -35,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	themeToggle.addEventListener("click", function () {
-		body.classList.toggle("dark-mode");
-	});
+	// themeToggle.addEventListener("click", function () {
+	// 	body.classList.toggle("dark-mode");
+	// });
 
 	const registerForm = document.getElementById("register-form");
 	const loginForm = document.getElementById("login-form");

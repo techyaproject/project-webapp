@@ -90,6 +90,21 @@ exports.getAllAdmins = async (req, res) => {
 	}
 };
 
+exports.deleteAdmin = async (req, res) => {
+	try {
+		const deletedAdmin = await User.findByIdAndDelete(req.params.id);
+		return res.status(200).json({
+			message: "Admin deleted successfully",
+			data: deletedAdmin
+		});
+	} catch (error) {
+		return res.status(500).json({
+			message: error.message,
+			data: null
+		});
+	}
+}
+
 exports.signout = async (req, res) => {
 	try {
 		return res.json({

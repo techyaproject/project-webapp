@@ -1,29 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Wellfleet&display=swap");
+
 /* General Styles */
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Arial, sans-serif;
+	font-family: "Montserrat", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Wellfleet", monospace;
 }
 
 /* Navbar Styles */
 .navbar {
 	background-color: #333;
 	color: #fff;
-	padding: 10px;
+	padding: 2em 3em;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+.navbar-links {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
 }
 
 .navbar-brand h2 {
 	margin: 0;
 }
 #logout-btn {
-	color: rgb(237, 61, 61);
+	color: white;
 	text-decoration: none;
+	font-weight: bold;
+	font-size: 14pt;
 }
 #logout-btn:hover {
 	text-decoration: underline;
+	color: #ff0000;
 }
 
 /* Main content styling */
@@ -40,7 +56,7 @@ main {
 	background-color: #f0f0f0;
 	position: fixed;
 	left: 0;
-	top: 50px; /* Adjust to match navbar height */
+	top: 95px; /* Adjust to match navbar height */
 	bottom: 0;
 	overflow-y: auto;
 }
@@ -90,7 +106,7 @@ main {
 	margin-bottom: 10px;
 }
 
-#add-card-info{
+#add-card-info {
 	display: none;
 }
 
@@ -106,7 +122,7 @@ main {
 	background-color: #cc0000;
 }
 
-.deactivate-btn{
+.deactivate-btn {
 	background-color: grey;
 	color: #fff;
 	border: none;
@@ -243,6 +259,7 @@ form button:hover {
 	border-radius: 4px;
 	cursor: pointer;
 	font-weight: bold;
+	font-family: inherit;
 }
 #download-entries-btn:hover {
 	background-color: #45a049;
@@ -347,9 +364,22 @@ form button:hover {
 	border-radius: 4px;
 	padding: 10px;
 	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
 }
 #add-admin-info {
 	display: none;
+}
+.delete-btn {
+	background-color: #ff0000;
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-family: inherit;
+	font-weight: bold;
+	margin-top: 2em;
 }
 
 @keyframes spin {

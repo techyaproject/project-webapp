@@ -7,5 +7,6 @@ router
     .get("/all-admins", authControllers.getAllAdmins)
     .post("/signup", checkNewUser, authControllers.signup)
     .post("/signin", checkLogin, authControllers.signin)
+    .delete("/:id", authControllers.deleteAdmin)
 
 module.exports = router;
