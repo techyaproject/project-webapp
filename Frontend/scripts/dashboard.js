@@ -235,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const adminList = document.querySelector(".admin-list");
 		adminList.innerHTML = ""; // Clear existing admins
 
+		admins = admins.reverse(); // Reverse the order of admins
 		admins.forEach((admin) => {
 			const adminItem = document.createElement("div");
 			adminItem.classList.add("admin-item");
