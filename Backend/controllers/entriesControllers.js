@@ -52,7 +52,7 @@ exports.createEntry = async (req, res) => {
 			EntryDetails.entry_status = "disallowed";
 			const rejectedEntry = await Entry.create(EntryDetails);
 			return res.status(400).json({
-				message: "Card not registered. Kindly contact Adminto gain access!",
+				message: "Card not registered. Kindly contact Admin to gain access!",
 				data: rejectedEntry
 			});
 		}
