@@ -19,7 +19,7 @@ header {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 header h1 {
-	color: #007bff;
+	color: #036000;
 	font-family: "Wellfleet", monospace;
 }
 
@@ -52,7 +52,7 @@ nav {
 }
 
 .nav-links a {
-	color: #007bff;
+	color: #036000;
 	text-decoration: none;
 	transition: color 0.3s ease;
 	font-size: 18px;
@@ -63,7 +63,6 @@ nav {
 }
 
 .nav-links a:hover {
-	color: #0056b3;
 	text-decoration: underline;
 }
 .link-and-theme {
@@ -153,7 +152,7 @@ nav {
 }
 .what-we-do h2 {
 	margin-bottom: 2em;
-	color: #007bff;
+	color: #036000;
 	margin-left: 1em;
 }
 
@@ -183,7 +182,7 @@ nav {
 
 /* Call to Action Section */
 .cta {
-	background-color: #007bff;
+	background-color: #036000;
 	color: #fff;
 	text-align: center;
 	padding: 80px 20px;
@@ -200,7 +199,7 @@ nav {
 .btn {
 	display: inline-block;
 	background-color: #fff;
-	color: #007bff;
+	color: #036000;
 	padding: 10px 20px;
 	border-radius: 5px;
 	text-decoration: none;
